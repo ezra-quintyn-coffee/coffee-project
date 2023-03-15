@@ -73,7 +73,7 @@ legend {
 fieldset {
     border: 1px solid white;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
-    height: 80vh;
+    height: 78vh;
     overflow: auto;
 }
 
@@ -88,10 +88,12 @@ select {
 /*  //- - - - - -CLASS Selectors- - - - - -\\  */
 .bg-image {
     position: absolute;
-    top: 108px;
+    top: 104px;
     left: -5px;
     width: 105vw;
-    height: 690px;
+    height: 692px;
+    border-top: 2px solid #dcc3a1;
+    border-bottom: 2px solid #dcc3a1;
 }
 
 .container {
@@ -141,6 +143,7 @@ select {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50px;
+    height: 82vh;
 }
 
 .search-title {
@@ -242,10 +245,10 @@ select {
 
     .bg-image {
         position: absolute;
-        top: 108px;
+        top: 104px;
         left: -5px;
         min-width: 105vw;
-
+        border-bottom: none;
         overflow: hidden;
     }
 
@@ -261,6 +264,7 @@ select {
         align-items: center;
         justify-content: center;
         padding-bottom: 25px;
+        min-height: 785px;
     }
 
     .search-section-wrapper {
