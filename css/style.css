@@ -38,7 +38,7 @@
 
 
 h3 {
-    margin: 0;
+    margin: 30px 0 0 0;
 }
 
 /*STYLE SUGAR*/
@@ -127,10 +127,16 @@ p {
     color: tan;
 }
 
+.roast, #coffee-search, #new-coffee {
+    border-radius: 50px;
+}
+
 #live-search {
     min-width: 500px;
     max-width: 500px;
+    padding-left: 10px;
 }
+
 
 
 @media screen and (max-width: 800px) {

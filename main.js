@@ -65,7 +65,7 @@ const coffeesSearch = () => {
     let currentSearch = userSearch.value.toLowerCase();
     let userCoffees = [];
     coffees.forEach((coffee) => {
-        if (coffee.name.toLowerCase().includes(currentSearch)) {
+        if (coffee.name.toLowerCase().includes(currentSearch) && coffee.roast.includes(roastSelection.value)) {
             userCoffees.push(coffee);
         }
         tableBody.innerHTML = renderCoffees(userCoffees);
