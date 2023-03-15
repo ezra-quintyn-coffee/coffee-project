@@ -1,9 +1,11 @@
 "use strict"
 function renderCoffee(coffee) {
     let html = '<div class="coffee show">';
-    // html += '<div>' + coffee.id + '</div>';
+    html += `<img src="images/coffee-cup.jpeg" alt="${coffee.name}">`;
+    html += '<div class="coffee-title column">';
     html += '<div class="coffee-name">' + coffee.name + '</div>';
     html += '<div class="coffee-roast">' + coffee.roast + '</div>';
+    html += '</div>';
     html += '</div>';
 
     return html;
@@ -65,7 +67,7 @@ const coffeesSearch = () => {
     let currentSearch = userSearch.value.toLowerCase();
     let userCoffees = [];
     coffees.forEach((coffee) => {
-        if (coffee.name.toLowerCase().includes(currentSearch) && coffee.roast.includes(roastSelection.value)) {
+        if (coffee.name.toLowerCase().includes(currentSearch) && (coffee.roast.includes(roastSelection.value) || roastSelection.value === "all")) {
             userCoffees.push(coffee);
         }
         tableBody.innerHTML = renderCoffees(userCoffees);
@@ -94,4 +96,37 @@ submitCoffeeButton.addEventListener("click", () => {
     addNewCoffee();
     coffeesSearch();
 });
+
+let submitCoffeeEnter = document.querySelector("#new-coffee");
+submitCoffeeEnter.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        addNewCoffee();
+        coffeesSearch();
+    }
+});
+
 //END USER ENTER NEW COFFEE FORM JS
+
+
+
+
+/*
+const myObject = {
+  name : "john doe",
+  age : 32,
+  gender : "male",
+  profession : "optician"
+}
+
+window.localStorage.setItem("myObject", JSON.stringify(myObject));
+
+let newObject = window.localStorage.getItem("myObject");
+console.log(JSON.parse(newObject));
+
+Adds Data       window.localStorage.setItem("key", value)
+Retrieve Data   window.localStorage.getItem("key name")
+Obj to JSON     JSON.stringify
+JSON to Obj     JSON.parse
+ */
+
