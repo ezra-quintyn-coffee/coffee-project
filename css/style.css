@@ -1,8 +1,5 @@
-* {
-    font-family: "Helvetica Neue", sans-serif;
-}
 
-/*JS DOM Event selectors*/
+/*  //- - - - JS DOM Event Selectors - - - -\\  */
 .show {
     display: flex;
 }
@@ -10,35 +7,29 @@
 .hide {
     display: none;
 }
+/*  \\- - - - - - - - - - - - - - - - - - -//  */
 
-/*SPECIFIC LAYOUT*/
 
-/*DELETE  DELETE DELETE  DELETE DELETE  DELETE DELETE  DELETE*/
-/*FOR INSPECT GUIDE*/
-/*.row {*/
-/*    padding: 0;*/
-/*    border-top: 1px solid pink;*/
-/*    border-bottom: 1px solid pink;*/
-/*}*/
 
-/*.column {*/
-/*    border-left: 2px dashed deepskyblue;*/
-/*    border-right: 2px dashed deepskyblue;*/
-/*}*/
-/*DELETE  DELETE DELETE  DELETE DELETE  DELETE DELETE  DELETE*/
-
+/*  //- - - - - ELEMENT Selectors - - - - -\\  */
+* {
+    font-family: "Helvetica Neue", sans-serif;
+}
 
 h3 {
     text-align: center;
+    color: #dcc3a1;
     font-family: "Times New Roman",sans-serif;
     font-size: 24px;
-    color: black;
-    border-bottom: 2px solid black;
-    border-radius: 10px;
-    margin: 10px 0;
+    margin: 20px 0 10px 0;
 }
 
 /*STYLE SUGAR*/
+html {
+    overflow: hidden;
+    position: relative;
+}
+
 body {
     background-image: url("/coffee-project/images/abstract-bg.webp");
     background-repeat: repeat;
@@ -52,7 +43,7 @@ label {
 }
 
 button[type="button"] {
-    background-color: rgba(139, 0, 0, 0.8);
+    background-color: rgba(180, 0, 0, 0.8);
     border-radius: 5px;
     border: none;
     color: white;
@@ -75,33 +66,50 @@ p {
 
 legend {
     font-family: "Academy Engraved LET", sans-serif;
-    font-size: 28px;
+    font-size: 30px;
     color: #dcc3a1;
 }
 
 fieldset {
     border: 1px solid white;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 80%, rgba(210, 180, 140, 0.5));
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
     height: 80vh;
     overflow: auto;
 }
 
-img {
-    max-width: 50px;
-    margin-right: 5px;
+select {
+    margin-bottom: 10px;
+}
+
+/*  \\- - - - - - - - - - - - - - - - - - -//  */
+
+
+
+/*  //- - - - - -CLASS Selectors- - - - - -\\  */
+.bg-image {
+    position: absolute;
+    top: 108px;
+    left: -5px;
+    width: 105vw;
+    height: 690px;
+}
+
+.container {
+    z-index: 1;
+    row-gap: 0;
 }
 
 .fancy {
     font-family: "Academy Engraved LET", sans-serif;
 }
 
-.black, .bold  {
-    color: black;
+.white, .bold  {
+    color: white;
     font-weight: bold;
 }
 
-.white {
-    color: white;
+.tan {
+    color: tan;
 }
 
 .head-row {
@@ -112,6 +120,7 @@ img {
 
 .company {
     margin-top: 15px;
+    margin-bottom: 5px;
     font-size: 48px;
     line-height: 0.5;
 }
@@ -130,11 +139,21 @@ img {
 
 .content {
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    border-bottom: 2px solid #dcc3a1;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .search-section-wrapper {
     flex: unset;
-    background-color: tan;
     border-radius: 10px;
     width: 400px;
     padding: 15px;
@@ -161,6 +180,12 @@ img {
     gap: 5px;
 }
 
+.coffee-img {
+    max-width: 50px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
 .coffee-name {
     font-size: 20px;
 }
@@ -179,21 +204,44 @@ img {
 .roast:hover, #coffee-search:hover, #new-coffee:hover {
     border: 2px solid white;
 }
+/*  \\- - - - - - - - - - - - - - - - - - -//  */
 
+
+
+/*  //- - - - - - -ID Selectors - - - - - -\\  */
 #live-search {
     min-width: 500px;
     max-width: 500px;
     padding-left: 10px;
 }
+/*  \\- - - - - - - - - - - - - - - - - - -//  */
 
 
 
+/*  //- - - - - - MEDIA QUERIES - - - - - -\\  */
 @media screen and (max-width: 800px) {
     fieldset {
         width: 90vw;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 80%, rgba(210, 180, 140, 0.5));
-        height: 40vw;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
+        height: 40vh;
         overflow: auto;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+    .search-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .bg-image {
+        position: absolute;
+        top: 108px;
+        left: -5px;
+        min-width: 105vw;
+
+        overflow: hidden;
     }
 
     .main-section {
@@ -207,14 +255,12 @@ img {
         position: absolute;
         align-items: center;
         justify-content: center;
+        padding-bottom: 25px;
     }
 
     .search-section-wrapper {
         margin-top: 0;
-        flex: unset;
-        background-color: tan;
-        border-radius: 10px;
-        width: 90vw;
+        width: 80vw;
         padding: 15px;
     }
 
@@ -244,7 +290,7 @@ img {
 
 @media screen and (max-width: 501px) {
     img {
-        max-width: 100px;
+        min-width: 100px;
     }
     .coffee {
         min-width: 90vw;

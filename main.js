@@ -1,7 +1,7 @@
 "use strict"
 function renderCoffee(coffee) {
     let html = '<div class="coffee show">';
-    html += `<img src="images/coffee-cup.jpeg" alt="${coffee.name}">`;
+    html += `<img class="coffee-img" src="images/coffee-cup.jpeg" alt="${coffee.name}">`;
     html += '<div class="coffee-title column">';
     html += '<div class="coffee-name">' + coffee.name + '</div>';
     html += '<div class="coffee-roast">' + coffee.roast + '</div>';
@@ -54,12 +54,10 @@ let coffees = [
 ];
 
 let tbody = document.querySelector('#coffees');
-// let submitSearch = document.querySelector('#submitSearch');
 let roastSelection = document.querySelector('#roast-selection');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-// submitSearch.addEventListener('click', updateCoffees)
 roastSelection.addEventListener('change', updateCoffees);
 
 let userSearch = document.querySelector("#coffee-search")
@@ -86,8 +84,10 @@ function addNewCoffee () {
         alert("Please enter a coffee name!");
     } else {
         coffees.push(userCoffee);
-        newCoffeeName.value = "";
         console.log(`Added new coffee "${userCoffee.name}"`);
+        tbody.innerHTML = renderCoffees(coffees); // update the array with the new coffee
+        localStorage.setItem('newCoffees', JSON.stringify(coffees)); //stores it locally
+        newCoffeeName.value = "";
     }
 }
 // ADD NEW COFFEE OBJECT TO THE COFFEES ARRAY AND REFRESHING COFFEE LIST ON BUTTON CLICK
@@ -95,6 +95,7 @@ let submitCoffeeButton = document.querySelector("#new-coffee-button");
 submitCoffeeButton.addEventListener("click", () => {
     addNewCoffee();
     coffeesSearch();
+    updateStorage();
 });
 
 let submitCoffeeEnter = document.querySelector("#new-coffee");
@@ -103,30 +104,20 @@ submitCoffeeEnter.addEventListener("keypress", (e) => {
         e.preventDefault();
         addNewCoffee();
         coffeesSearch();
+        updateStorage();
     }
 });
-
 //END USER ENTER NEW COFFEE FORM JS
 
-
-
-
-/*
-const myObject = {
-  name : "john doe",
-  age : 32,
-  gender : "male",
-  profession : "optician"
+function updateStorage() {
+    sessionStorage.setItem('oldCoffees', JSON.stringify(coffees));
 }
 
-window.localStorage.setItem("myObject", JSON.stringify(myObject));
-
-let newObject = window.localStorage.getItem("myObject");
-console.log(JSON.parse(newObject));
-
-Adds Data       window.localStorage.setItem("key", value)
-Retrieve Data   window.localStorage.getItem("key name")
-Obj to JSON     JSON.stringify
-JSON to Obj     JSON.parse
- */
+window.addEventListener('load', function() {
+    let oldCoffees = JSON.parse(sessionStorage.getItem('oldCoffees'));
+    if (oldCoffees !== null) {
+        coffees = oldCoffees;
+        tbody.innerHTML = renderCoffees(coffees);
+    }
+});
 
