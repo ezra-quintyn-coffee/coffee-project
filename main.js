@@ -1,5 +1,19 @@
-"use strict"
+"use strict";
 
+//FUNCTION TO ASSIGN ROAST FONT COLORS BASED ON ROAST SELECTION
+const assignColor = (darkness) => {
+    let fontColor = '';
+    if (darkness === 'light') {
+        fontColor += "light";
+    } else if (darkness === 'medium') {
+        fontColor += "medium";
+    } else if (darkness === 'dark') {
+        fontColor += "dark";
+    }
+    return fontColor
+}
+
+//FUNCTION TO ASSIGN IMG TO COFFEE BASED ON COFFEE ROAST
 const assignPic = (roaster) => {
     let imgCoffee = '';
     if (roaster === 'light') {
@@ -7,23 +21,25 @@ const assignPic = (roaster) => {
     } else if (roaster === 'medium') {
         imgCoffee += "images/coffee-cup2.jpg";
     } else if (roaster === 'dark') {
-       imgCoffee += "images/coffee-cup.jpeg";
+        imgCoffee += "images/coffee-cup.jpeg";
     }
     return imgCoffee
 }
 
+//FUNCTION TO TURN COFFEES OBJECT INTO HTML CODE
 function renderCoffee(coffee) {
     let html = '<div class="coffee show">';
     html += `<img class="coffee-img" src="${assignPic(coffee.roast)}" alt="${coffee.name}">`;
     html += '<div class="coffee-title column">';
     html += '<div class="coffee-name">' + coffee.name + '</div>';
-    html += '<div class="coffee-roast">' + coffee.roast + '</div>';
+    html += `<div class="coffee-roast ${assignColor(coffee.roast)} ">` + coffee.roast + '</div>';
     html += '</div>';
     html += '</div>';
 
     return html;
 }
 
+//LOOP THROUGH COFFEES ARRAY TURN INTO HTML
 function renderCoffees(coffees) {
     let html = '';
     for(let i = 0; i < coffees.length; i++) {
@@ -32,8 +48,9 @@ function renderCoffees(coffees) {
     return html;
 }
 
-let tableBody = document.querySelector('.coffeebody')
+let tableBody = document.querySelector('.coffeebody');
 
+//FUNCTION TO UPDATE COFFEE DISPLAY BASED ON ROAST SELECTION
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     let selectedRoast = roastSelection.value;
@@ -68,12 +85,13 @@ let coffees = [
 
 let tbody = document.querySelector('#coffees');
 let roastSelection = document.querySelector('#roast-selection');
-
 tbody.innerHTML = renderCoffees(coffees);
 
+//EVENT LISTENER TO UPDATE DISPLAYED COFFEES WHEN ROAST SELECTION CHANGES
 roastSelection.addEventListener('change', updateCoffees);
+let userSearch = document.querySelector("#coffee-search");
 
-let userSearch = document.querySelector("#coffee-search")
+// FUNCTION TO SEARCH THROUGH COFFEES ARRAY AND FILTER COFFEES BASED ON USER SEARCH
 const coffeesSearch = () => {
     let currentSearch = userSearch.value.toLowerCase();
     let userCoffees = [];
@@ -84,12 +102,14 @@ const coffeesSearch = () => {
         tableBody.innerHTML = renderCoffees(userCoffees);
     })
 }
+
+//EVENT LISTENER THAT REFRESHES COFFEE SEARCH ON EACH KEYUP
 userSearch.addEventListener('keyup', coffeesSearch);
 
 
-//USER ENTER NEW COFFEE FORM JS
 let newCoffeeName = document.querySelector("#new-coffee");
 let newCoffeeRoast = document.querySelector("#new-roast-selection");
+
 //FUNCTION TO CREATE AND PUSH NEW COFFEE OBJECT TO COFFEES ARRAY
 function addNewCoffee () {
     let userCoffee = {id: coffees.length + 1, name: newCoffeeName.value, roast: newCoffeeRoast.value};
@@ -103,6 +123,7 @@ function addNewCoffee () {
         newCoffeeName.value = "";
     }
 }
+
 // ADD NEW COFFEE OBJECT TO THE COFFEES ARRAY AND REFRESHING COFFEE LIST ON BUTTON CLICK
 let submitCoffeeButton = document.querySelector("#new-coffee-button");
 submitCoffeeButton.addEventListener("click", () => {
@@ -111,6 +132,7 @@ submitCoffeeButton.addEventListener("click", () => {
     updateStorage();
 });
 
+// ADD NEW COFFEE OBJECT TO THE COFFEES ARRAY AND REFRESHING COFFEE LIST ON ENTER
 let submitCoffeeEnter = document.querySelector("#new-coffee");
 submitCoffeeEnter.addEventListener("keypress", (e) => {
     if (e.key === 'Enter') {
@@ -120,12 +142,13 @@ submitCoffeeEnter.addEventListener("keypress", (e) => {
         updateStorage();
     }
 });
-//END USER ENTER NEW COFFEE FORM JS
 
+// FUNCTION TO UPDATE STORED COFFEES ARRAY WITH USER COFFEE
 function updateStorage() {
     sessionStorage.setItem('oldCoffees', JSON.stringify(coffees));
 }
 
+// EVENT LISTENER-- WHEN PAGE RELOADS/LOADS LOAD STORED LOCAL COFFEE ARRAY
 window.addEventListener('load', function() {
     let oldCoffees = JSON.parse(sessionStorage.getItem('oldCoffees'));
     if (oldCoffees !== null) {
