@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Coffee Project</title>
-    <link href="css/layout.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="page-wrapper">
     <div>
+<!--    HERO IMG, ABS-POS'd TO PAGE-WRAPPER-->
         <img class="bg-image" src="images/cafe-bg.webp" alt="bg">
     </div>
     <div class="container">
-<!--HEADER-->
+<!--    HEAD BANNER-->
         <div class="head-row row align-bottom white">
             <div class="column align-left justify-center">
                 <div class="company white fancy">JAVA-DOM</div>
@@ -22,9 +23,9 @@
                 </div>
             </div>
         </div>
-<!--MAIN SECTION-->
+<!--    MAIN SECTION - CONTENT BODY-->
         <div class="main-section row justify-center">
-<!--COFFEE LIVE SEARCH-->
+<!--        COFFEE LIVE SEARCH (CLS) RENDERING-->
             <div class="content row">
                 <fieldset>
                     <legend>Coffee Selection</legend>
@@ -32,9 +33,10 @@
                         <div class="coffeebody row" id="coffees"></div>
                     </div>
                 </fieldset>
-<!--USER SEARCH SECTION-->
+<!--            USER SEARCH INTERACTION SECTION-->
                 <div class="search-section-wrapper column justify-space-between">
                     <div class="search-title fancy">Search-a-Brew</div>
+<!--                SEARCH FILTER FOR CLS RENDERING-->
                     <div id="search-wrapper" class="column white shrink">
                         <form class="roast-search-wrapper column">
                             <label class="bold" for="roast-selection"> Roast</label>
@@ -50,6 +52,7 @@
                             <input id="coffee-search" type="text" placeholder="Find a brew...">
                         </form>
                     </div>
+<!--                USER ADD COFFEE OBJECT-->
                     <div id="suggestion-wrapper" class="column shrink">
                         <h3>Personal Brew</h3>
                         <form class="roast-search-wrapper column shrink">
@@ -72,6 +75,6 @@
     </div>
 </div>
 
-    <script src="main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

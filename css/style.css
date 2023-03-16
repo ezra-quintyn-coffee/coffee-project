@@ -116,6 +116,18 @@ select {
     color: tan;
 }
 
+.light {
+    color: #f1cfa2;
+}
+
+.medium {
+    color: #c78353;
+}
+
+.dark {
+    color: #ad5618;
+}
+
 .head-row {
     border-bottom: 2px solid white;
     border-radius: 10px;
@@ -201,7 +213,6 @@ select {
 }
 .coffee-roast {
     font-size: 16px;
-    color: tan;
 }
 
 .roast, #coffee-search, #new-coffee {
