@@ -1,7 +1,20 @@
 "use strict"
+
+const assignPic = (roaster) => {
+    let imgCoffee = '';
+    if (roaster === 'light') {
+        imgCoffee += "images/coffee-cup3.jpeg";
+    } else if (roaster === 'medium') {
+        imgCoffee += "images/coffee-cup2.jpg";
+    } else if (roaster === 'dark') {
+       imgCoffee += "images/coffee-cup.jpeg";
+    }
+    return imgCoffee
+}
+
 function renderCoffee(coffee) {
     let html = '<div class="coffee show">';
-    html += `<img class="coffee-img" src="images/coffee-cup.jpeg" alt="${coffee.name}">`;
+    html += `<img class="coffee-img" src="${assignPic(coffee.roast)}" alt="${coffee.name}">`;
     html += '<div class="coffee-title column">';
     html += '<div class="coffee-name">' + coffee.name + '</div>';
     html += '<div class="coffee-roast">' + coffee.roast + '</div>';

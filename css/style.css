@@ -75,6 +75,7 @@ fieldset {
     border: 1px solid white;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
     height: 76vh;
+    max-height: 650px;;
     overflow: auto;
 }
 
@@ -89,7 +90,7 @@ select {
 /*  //- - - - - -CLASS Selectors- - - - - -\\  */
 .bg-image {
     position: absolute;
-    top: 104px;
+    top: 99px;
     left: -5px;
     width: 105vw;
     height: 692px;
@@ -129,7 +130,7 @@ select {
 }
 
 .slogan-row {
-    padding: 0 0 5px 0;
+    padding: 0;
     justify-content: space-between;
     color: #dcc3a1;
 }
@@ -144,7 +145,7 @@ select {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50px;
-    height: 82vh;
+    height: 690px;
 }
 
 .search-title {
@@ -174,20 +175,25 @@ select {
     width: 500px;
     padding: 0;
     justify-content: center;
+    max-height: 692px;;
 }
 
 .coffee {
     display: flex;
     flex-direction: row;
-    align-items: start;
     min-width: 200px;
     gap: 5px;
+    position: relative;
 }
 
 .coffee-img {
     max-width: 50px;
     margin-right: 5px;
     border-radius: 5px;
+}
+
+.coffee-title {
+    justify-content: center;
 }
 
 .coffee-name {
@@ -246,7 +252,6 @@ select {
 
     .bg-image {
         position: absolute;
-        top: 104px;
         left: -5px;
         min-width: 105vw;
         border-bottom: none;
