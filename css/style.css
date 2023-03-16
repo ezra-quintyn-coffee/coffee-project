@@ -17,11 +17,16 @@
 }
 
 h3 {
+    font-weight: lighter;
+    align-self: center;
     text-align: center;
-    color: #dcc3a1;
+    color: white;
     font-family: "Times New Roman",sans-serif;
     font-size: 24px;
     margin: 20px 0 10px 0;
+    border-bottom: 2px double #dcc3a1;
+    border-radius: 5px;
+    width: 300px;
 }
 
 /*STYLE SUGAR*/
@@ -35,10 +40,10 @@ body {
     background-repeat: repeat;
 }
 
-label {
-    font-size: 20px;
-    margin-bottom: 5px;
-    font-family: "Times New Roman", sans-serif;
+label.bold {
+    font-size: 16px;
+    color: lightgray;
+    margin-left: 10px;
     font-weight: bold;
 }
 
@@ -49,6 +54,10 @@ button[type="button"] {
     color: white;
     padding: 4px;
     margin: 10px 0;
+}
+
+button[type="button"]:hover {
+    border: 1px solid rgb(236, 193, 101);
 }
 
 span {
@@ -73,6 +82,7 @@ legend {
 fieldset {
     margin: 10px;
     border: 1px solid white;
+    border-radius: 0 30px;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
     height: 76vh;
     max-height: 650px;;
@@ -129,7 +139,7 @@ select {
 }
 
 .head-row {
-    border-bottom: 2px solid white;
+    border-bottom: 2px double white;
     border-radius: 10px;
     width: 90vw;
 }
@@ -164,7 +174,7 @@ select {
     text-align: center;
     font-size: 30px;
     color: white;
-    border-bottom: 2px solid #dcc3a1;
+    border-bottom: 2px double #dcc3a1;
     border-radius: 10px;
     margin-bottom: 20px;
 }
@@ -223,8 +233,14 @@ select {
 }
 
 .roast:hover, #coffee-search:hover, #new-coffee:hover {
+    border: 2px solid rgb(236, 193, 101);
+}
+
+.roast:focus, #coffee-search:focus, #new-coffee:focus {
+    outline: 2px solid rgba(255, 0, 0, 0.7);
     border: 2px solid white;
 }
+
 /*  \\- - - - - - - - - - - - - - - - - - -//  */
 
 
@@ -240,7 +256,7 @@ select {
 
 
 /*  //- - - - - - MEDIA QUERIES - - - - - -\\  */
-@media screen and (max-width: 800px) {
+@media screen and (max-width:900px) {
     fieldset {
         width: 90vw;
         background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 90%, rgba(210, 180, 140, 0.5));
@@ -297,15 +313,7 @@ select {
 
     .coffeebody {
         width: 90vw;
-    }
-
-    .coffee-name {
-        font-size: 20px;
-    }
-
-    .coffee-roast {
-        font-size: 12px;
-        color: tan;
+        font-weight: bold;
     }
 
     #live-search {
